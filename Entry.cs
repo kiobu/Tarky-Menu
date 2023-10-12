@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Tarky_Menu
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin("TarkyMenu", "TarkyMenu", "1.0.0")]
     [BepInProcess("EscapeFromTarkov.exe")]
     public class Entry : BaseUnityPlugin
     {
