@@ -13,22 +13,15 @@ using Tarky_Menu.Classes.PlayerStats;
 using Tarky_Menu.Classes.Weapons;
 using Tarky_Menu.Classes.World;
 using Tarky_Menu.Classes.Patches;
-#if DEBUG
-using Tarky_Menu.Classes.Development; //Debugging Utils
-#endif
 using UnityEngine;
 using System.Linq;
 
 namespace Tarky_Menu
 {
-    [BepInPlugin(MOD_GUID, MOD_NAME, MOD_VERSION)]
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInProcess("EscapeFromTarkov.exe")]
     public class Entry : BaseUnityPlugin
     {
-        private const String MOD_GUID = "me.ssh.tarkymenu";
-        private const String MOD_NAME = "SERVPH's Tarky Menu";
-        private const String MOD_VERSION = "1.0";
-
         private Health _health;
         private CameraUtils _cameraUtils;
         private RecoilControlSystem _recoilControlSystem;
@@ -36,10 +29,6 @@ namespace Tarky_Menu
         private WeaponUtils _weaponUtils;
         private WorldUtils _worldUtils;
         private NPC_Controller _npcController;
-
-#if DEBUG
-        private Development _development; //Debugging Utils
-#endif
 
         private Player.ESpeedLimit[] AllLimits = {
             0, (Player.ESpeedLimit)1, (Player.ESpeedLimit)2, (Player.ESpeedLimit)3, (Player.ESpeedLimit)4, (Player.ESpeedLimit)5, (Player.ESpeedLimit)6, (Player.ESpeedLimit)7, (Player.ESpeedLimit)8
@@ -55,10 +44,6 @@ namespace Tarky_Menu
         public ConfigEntry<bool> QuickThrowNade { get; private set; }
         public bool HasDemiGodRan { get; set; }
         public bool HasDied { get; set; }
-
-
-
-
 
         private void Awake()
         {
@@ -76,10 +61,11 @@ namespace Tarky_Menu
             this._weaponUtils = new WeaponUtils();
             this._worldUtils = new WorldUtils();
             this._npcController = new NPC_Controller();
+
 #if DEBUG
-            this._development = new Development();
             new GameStartedPatch().Enable();
 #endif
+
             this._skillzClass.Awake();
             this._health.Awake();
             this._weaponUtils.Awake();
@@ -87,9 +73,7 @@ namespace Tarky_Menu
             this._cameraUtils.Awake();
             this._worldUtils.Awake();
             this._npcController.Awake();
-#if DEBUG
-            this._development.Awake(); //Debugging Utils
-#endif
+
             ConsoleScreen.Processor.RegisterCommand("q", () => { Process.GetCurrentProcess().Kill(); });
             ConsoleScreen.Processor.RegisterCommand("quit", () => { Process.GetCurrentProcess().Kill(); });
             ConsoleScreen.Processor.RegisterCommand("clear", delegate ()
@@ -105,7 +89,7 @@ namespace Tarky_Menu
                 }
                 else
                 {
-                    EndByExitTrigerScenario.GInterface70 ginterface = Singleton<AbstractGame>.Instance as EndByExitTrigerScenario.GInterface70;
+                    EndByExitTrigerScenario.GInterface73 ginterface = Singleton<AbstractGame>.Instance as EndByExitTrigerScenario.GInterface73;
                     bool flag2 = ginterface != null;
                     if (flag2)
                     {
@@ -155,9 +139,6 @@ namespace Tarky_Menu
             this._cameraUtils.NVGController();
             this._worldUtils.DoorUnlocker();
             this._npcController.Update();
-#if DEBUG
-            this._development.Update();
-#endif
             this._worldUtils.MiscWorldUtilities();
 
             if (Instance.LocalPlayer != null && Instance.LocalPlayer.ActiveHealthController != null)
