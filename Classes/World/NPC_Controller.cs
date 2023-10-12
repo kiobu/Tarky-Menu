@@ -46,7 +46,7 @@ namespace Tarky_Menu.Classes.World
                 if (TPAll.Value.IsDown())
                 {
                     Vector3 position = Instance.LocalPlayer.Transform.position;
-                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2764.HitMask))
+                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2783.HitMask))
                     {
                         position = Hit.point;
                     }
@@ -61,7 +61,7 @@ namespace Tarky_Menu.Classes.World
                 if (TPScav.Value.IsDown())
                 {
                     Vector3 position = Instance.LocalPlayer.Transform.position;
-                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2764.HitMask))
+                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2783.HitMask))
                     {
                         position = Hit.point;
                     }
@@ -79,7 +79,7 @@ namespace Tarky_Menu.Classes.World
                 if (TPUsec.Value.IsDown())
                 {
                     Vector3 position = Instance.LocalPlayer.Transform.position;
-                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2764.HitMask))
+                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2783.HitMask))
                     {
                         position = Hit.point;
                     }
@@ -97,7 +97,7 @@ namespace Tarky_Menu.Classes.World
                 if (TPBear.Value.IsDown())
                 {
                     Vector3 position = Instance.LocalPlayer.Transform.position;
-                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2764.HitMask))
+                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2783.HitMask))
                     {
                         position = Hit.point;
                     }
@@ -115,7 +115,7 @@ namespace Tarky_Menu.Classes.World
                 if (TPBoss.Value.IsDown())
                 {
                     Vector3 position = Instance.LocalPlayer.Transform.position;
-                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2764.HitMask))
+                    if (TPCrosshairValue.Value && Instance.LocalPlayer.HandsController is Player.FirearmController firearmcontroller && Physics.Raycast(new Ray(firearmcontroller.Fireport.position, firearmcontroller.WeaponDirection), out RaycastHit Hit, Single.MaxValue, GClass2783.HitMask))
                     {
                         position = Hit.point;
                     }

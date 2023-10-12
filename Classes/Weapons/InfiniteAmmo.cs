@@ -16,7 +16,7 @@ namespace Tarky_Menu.Classes.Weapons
         }
 
         [PatchPostfix]
-        private static void Postfix(GClass2765 shot)
+        private static void Postfix(GClass2784 shot)
         {
             if (!Entry.Instance.InfAmmo.Value || !shot.Player.iPlayer.IsYourPlayer ||
                 !(shot.Weapon is Weapon weapon) || shot.Ammo.Template.Name.ToLower().StartsWith("shrapnel"))
