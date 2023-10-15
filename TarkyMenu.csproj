@@ -43,8 +43,8 @@
 			<SpecificVersion>False</SpecificVersion>
 			<HintPath>..\Shared\Managed\Comfort.Unity.dll</HintPath>
 		</Reference>
-		<Reference Include="hollowed">
-			<HintPath>..\Shared\Hollowed\hollowed.dll</HintPath>
+		<Reference Include="Assembly-CSharp">
+		  <HintPath>..\Shared\Hollowed\hollowed.dll</HintPath>
 		</Reference>
 		<Reference Include="ItemComponent.Types, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
 			<SpecificVersion>False</SpecificVersion>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Comfort.Common;
 using static Tarky_Menu.Entry;
 
 namespace Tarky_Menu.Classes.PlayerStats
@@ -10,28 +11,27 @@ namespace Tarky_Menu.Classes.PlayerStats
     internal class Health
     {
         private static String[] TargetBones = { "head", "spine3", "spine2", "spine1" };
-        public ConfigEntry<Boolean> Godmode { get; private set; }
-        public ConfigEntry<Boolean> Demigod { get; private set; }
-        public ConfigEntry<float> DamageMultiplier { get; private set; }
-        public Boolean Heal { get; private set; }
-        public ConfigEntry<BepInEx.Configuration.KeyboardShortcut> HealButton { get; private set; }
-        public ConfigEntry<Boolean> NoFall { get; private set; }
-        public ConfigEntry<Boolean> HungerEnergyDrain { get; private set; }
-        public ConfigEntry<Boolean> InfiniteHealthBoost { get; private set; }
-        public Boolean HasDoneGodMode { get; private set; }
-        public Boolean HasDoneNoFall { get; private set; }
-        public float originalFallValue { get; private set; }
+        public static ConfigEntry<Boolean> Godmode { get; private set; }
+        public static ConfigEntry<Boolean> Demigod { get; private set; }
+        public static ConfigEntry<float> DamageMultiplier { get; private set; }
+        public static Boolean Heal { get; private set; }
+        public static ConfigEntry<BepInEx.Configuration.KeyboardShortcut> HealButton { get; private set; }
+        public static ConfigEntry<Boolean> NoFall { get; private set; }
+        public static ConfigEntry<Boolean> HungerEnergyDrain { get; private set; }
+        public static ConfigEntry<Boolean> InfiniteHealthBoost { get; private set; }
+        public static Boolean HasDoneGodMode { get; private set; }
+        public static Boolean HasDoneNoFall { get; private set; }
 
 
 
         public void Awake()
         {
-            this.Godmode = Instance.Config.Bind("Player | Health", "Godmode", false, "Invincible");
-            this.Demigod = Instance.Config.Bind("Player | Health", "Demi-God", false, "Only ur head and thorax are invincible");
-            this.DamageMultiplier = Instance.Config.Bind("Player | Health", "Damage Multiplier", 1f);
-            this.HealButton = Instance.Config.Bind("Player | Health", "Heal", new BepInEx.Configuration.KeyboardShortcut());
-            this.NoFall = Instance.Config.Bind("Player | Health", "No Fall Damage", false);
-            this.HungerEnergyDrain = Instance.Config.Bind("Player | Health", "No Energy/Hunger Drain", false);
+            Godmode = Instance.Config.Bind("Player | Health", "Godmode", false, "Invincible");
+            Demigod = Instance.Config.Bind("Player | Health", "Demi-God", false, "Only ur head and thorax are invincible");
+            DamageMultiplier = Instance.Config.Bind("Player | Health", "Damage Multiplier", 1f);
+            HealButton = Instance.Config.Bind("Player | Health", "Heal", new BepInEx.Configuration.KeyboardShortcut());
+            NoFall = Instance.Config.Bind("Player | Health", "No Fall Damage", false);
+            HungerEnergyDrain = Instance.Config.Bind("Player | Health", "No Energy/Hunger Drain", false);
         }
 
         public void godMod()
@@ -46,17 +46,12 @@ namespace Tarky_Menu.Classes.PlayerStats
                         Instance.LocalPlayer.ActiveHealthController.RemoveNegativeEffects(EBodyPart.Common);
                         Instance.LocalPlayer.ActiveHealthController.RestoreFullHealth();
                     }
-                    if (Instance.LocalPlayer.ActiveHealthController.FallSafeHeight != 9999999f)
-                    {
-                        Instance.LocalPlayer.ActiveHealthController.FallSafeHeight = 9999999f;
-                    }
                 }
                 if (!Godmode.Value)
                 {
                     if (Instance.LocalPlayer.ActiveHealthController.DamageCoeff != 1f)
                     {
                         Instance.LocalPlayer.ActiveHealthController.SetDamageCoeff(1f);
-                        Instance.LocalPlayer.ActiveHealthController.FallSafeHeight = 1f;
                     }
                 }
 
@@ -89,19 +84,6 @@ namespace Tarky_Menu.Classes.PlayerStats
                             }
                         }
                     }
-                }
-
-                if (NoFall.Value && HasDoneNoFall == false)
-                {
-                    originalFallValue = Instance.LocalPlayer.ActiveHealthController.FallSafeHeight;
-                    Instance.LocalPlayer.ActiveHealthController.FallSafeHeight = 9999999f;
-                    HasDoneNoFall = true;
-                }
-
-                if (!NoFall.Value && HasDoneNoFall == true)
-                {
-                    Instance.LocalPlayer.ActiveHealthController.FallSafeHeight = originalFallValue;
-                    HasDoneNoFall = false;
                 }
 
                 if (HealButton.Value.IsDown())

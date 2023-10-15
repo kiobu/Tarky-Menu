@@ -54,6 +54,7 @@ namespace Tarky_Menu
             new infiniteammo().Enable();
             new QuickGrenadeThrow().Enable();
             new ConsoleBackground().Enable();
+            new HealthPatch().Enable();
             this._recoilControlSystem = new RecoilControlSystem();
             this._skillzClass = new SkillzClass();
             this._health = new Health();
